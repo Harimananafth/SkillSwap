@@ -6,7 +6,6 @@ const route = useRoute()
 </script>
 
 <template>
-
   <Landingpage v-if="route.path === '/'" />
   <div v-else>
     <div class="content">

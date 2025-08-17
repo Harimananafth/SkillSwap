@@ -44,7 +44,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="heroSec">
+  <section class="heroSec">
     <div class="header">
       <img src="/Resources/images/logo.png" alt="" class="logo">
     </div>
@@ -63,65 +63,84 @@ onMounted(() => {
       </div>
       <img src="/Resources/images/heroSecImage.png" alt="" class="heroSecImage">
     </div>
-  </div>
+  </section>
+  
+
+  <section class="tuto">
+    <div class="content">
+      <h1 class="sansation-bold">Comment ça marche ?</h1>
+      <p class="sansation-regular">C’est simple, rapide et gratuit !</p>
+      <div class="steps">
+        <div class="step">
+          <p class="sansation-regular">Créez votre compte en quelques clics.</p>
+        </div>
+        <div class="step">
+          <p class="sansation-regular">Proposez vos compétences et découvrez celles des autres.</p>
+        </div>
+        <div class="step">
+          <p class="sansation-regular">Échangez vos compétences sans débourser un centime.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <style scoped>
+section{
+    width: 100%;
+    min-height: 100vh;
+}
 .header{
     display: flex;
     justify-content: start;
     align-items: center;
 }
 .logo{
-    height: 110%;
     width: 130px;
-    margin-top: 20px;
+    height: 100%;
 }
 .heroSec{
     background-image: linear-gradient( 174.2deg,  rgba(255,244,228,1) 7.1%, rgba(240,246,238,1) 67.4% );        
-    height: 100vh;
-    width: 100vw;
     display: grid;
-    grid-template-rows: 12% 1fr;
-    padding: 0 2% 3% 5%;
+    grid-template-rows: 15% 85%;
+    padding: 0 2% 8% 5%;
+    box-sizing: border-box;
 }
 .content{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
 }
 .text{
+    box-sizing: border-box;
     display: grid;
-    grid-template-rows: 40% 1fr;
+    grid-template-rows: 1fr 1fr;
     align-items: center;
-    justify-items: center;
-    width: 100%;
-    height: 100%;
-    padding: 12% 0 3% 0;
+    justify-content: center;
 }
 .text h1{
     font-size: 3rem;
     text-align: center;
     font-weight: 700;
-    height: 100%;
 }
 .othertext{
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    margin-top: 2rem;
 }
 .othertext p{
     font-size: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     text-align: center;
 }
 .heroSecImage{
     height: 520px;
     width: 520px;
     margin-left: 80px;
-    margin-top: -10px;
 }
 .start{
     display: flex;
@@ -155,4 +174,19 @@ onMounted(() => {
     height: 20px;
     width: 20px;
 }
+
+/* Tuto Section */
+.tuto{
+    background-color: #f0f6ee;
+}
+.tuto .content{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tuto h1{
+    font-size: 2.5rem;
+}          
 </style>
