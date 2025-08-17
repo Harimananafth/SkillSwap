@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
+/* Typing effect setup */
 const messages = [
   "Échangez vos compétences, pas votre argent ",
   "Donnez et recevez des compétences facilement ",
@@ -38,8 +39,24 @@ function deleteText() {
   }
 }
 
+/*Start typing effect on mount and setup IntersectionObserver*/
+
 onMounted(() => {
-  typeLoop()
+    typeLoop();
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                console.log("Hero section is visible" + entry.target);
+                entry.target.classList.add('in-view');
+            }else {
+                entry.target.classList.remove('in-view');
+            }
+        })
+    }, {})
+    const animateElements = document.querySelectorAll('.scale');
+    animateElements.forEach(element => {
+        observer.observe(element)
+    }); 
 })
 </script>
 
@@ -49,7 +66,7 @@ onMounted(() => {
       <img src="/Resources/images/logo.png" alt="" class="logo">
     </div>
     <div class="content">
-      <div class="text">
+      <div class="text ">
         <h1 class="sansation-bold">{{ displayedText }}</h1>
         <div class="othertext">
             <p class="sansation-regular">
@@ -61,23 +78,23 @@ onMounted(() => {
             </button>
         </div>
       </div>
-      <img src="/Resources/images/heroSecImage.png" alt="" class="heroSecImage">
+      <img src="/Resources/images/heroSecImage.png" alt="" class="heroSecImage scale">
     </div>
   </section>
   
 
   <section class="tuto">
-    <div class="content">
+    <div class="content scale">
       <h1 class="sansation-bold">Comment ça marche ?</h1>
       <p class="sansation-regular">C’est simple, rapide et gratuit !</p>
-      <div class="steps">
-        <div class="step">
+      <div class="steps scale">
+        <div class="step scale">
           <p class="sansation-regular">Créez votre compte en quelques clics.</p>
         </div>
-        <div class="step">
+        <div class="step scale">
           <p class="sansation-regular">Proposez vos compétences et découvrez celles des autres.</p>
         </div>
-        <div class="step">
+        <div class="step scale">
           <p class="sansation-regular">Échangez vos compétences sans débourser un centime.</p>
         </div>
       </div>
@@ -86,10 +103,25 @@ onMounted(() => {
 </template>
 
 <style scoped>
+
+/*general*/
 section{
     width: 100%;
     min-height: 100vh;
 }
+.scale{
+    opacity: 0;
+    scale: 0.5;
+    transition: .6s ease;
+}
+.scale.in-view{
+    opacity: 1;
+    scale: 1;
+}
+
+/* Hero Section */
+
+
 .header{
     display: flex;
     justify-content: start;
@@ -101,6 +133,7 @@ section{
 }
 .heroSec{
     background-image: linear-gradient( 174.2deg,  rgba(255,244,228,1) 7.1%, rgba(240,246,238,1) 67.4% );        
+
     display: grid;
     grid-template-rows: 15% 85%;
     padding: 0 2% 8% 5%;
@@ -176,9 +209,6 @@ section{
 }
 
 /* Tuto Section */
-.tuto{
-    background-color: #f0f6ee;
-}
 .tuto .content{
     width: 80%;
     margin: 0 auto;
