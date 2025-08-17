@@ -1,11 +1,18 @@
-<script setup></script>
+<script setup>
+import Landingpage from '@/components/landingpage.vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+
+  <Landingpage v-if="route.path === '/'" />
+  <div v-else>
+    <div class="content">
+      <RouterView />
+    </div>
+  </div>
 </template>
 
 <style scoped></style>
