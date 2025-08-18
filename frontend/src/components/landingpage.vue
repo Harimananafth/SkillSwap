@@ -1,13 +1,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import { comments, messages, advantages } from '../../public/Resources/Texts/landing'
 
-/* Typing effect setup */
-const messages = [
-  "Échangez vos compétences, pas votre argent ",
-  "Donnez et recevez des compétences facilement ",
-  "Apprenez en partageant votre savoir "
-]
-
+// Reactive variable to hold the displayed text
 const displayedText = ref("")
 let currentMessage = 0
 let charIndex = 0
@@ -52,7 +47,7 @@ onMounted(() => {
                 entry.target.classList.remove('in-view');
             }
         })
-    }, {})
+    }, {threshold: 0.3});
     const scale = document.querySelectorAll('.scale');
     scale.forEach(element => {
         observer.observe(element)
@@ -69,11 +64,19 @@ onMounted(() => {
     rightEntry.forEach(element => {
         observer.observe(element)
     }); 
+    const avantageItem = document.querySelectorAll('.avantageItem');
+    avantageItem.forEach(element => {
+        observer.observe(element)
+    }); 
     
 })
 </script>
 
 <template>
+
+  <!--Hero section-->
+
+
   <section class="heroSec">
     <div class="header">
       <img src="" alt="" class="logo">
@@ -93,13 +96,14 @@ onMounted(() => {
       </div>
       <img src="/Resources/images/heroSecImage.png" alt="" class="heroSecImage scale">
     </div>
-    <svg class="separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <svg class="separatorUp" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
       <path fill="currentColor" fill-opacity="1"
         d="M0,128L48,133.3C96,139,192,149,288,138.7C384,128,480,96,576,85.3C672,75,768,85,864,101.3C960,117,1056,139,1152,133.3C1248,128,1344,96,1392,80L1440,64L1440,0L0,0Z"></path>
     </svg>
 
   </section>
   
+  <!--Tuto section-->
 
   <section class="tuto">
   <h1 class="sansation-bold scale"> Comment ça marche ?</h1>
@@ -115,7 +119,7 @@ onMounted(() => {
       </div>
     </div>
 
-    <div class="card upEntry">
+    <div class="card scale">
       <div class="stepNumber sansation-regular">02</div>
       <div class="imgContainer halo halo2">
         <img src="/Resources/icons/programmation.png" alt="" class="cardImg">
@@ -138,6 +142,62 @@ onMounted(() => {
     </div>
   </div>
 </section>
+
+<!--Avantage + témoignage section-->
+
+<section class="avantage">
+
+
+  <svg class="separatorDown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path fill="currentColor" fill-opacity="1"
+      d="M0,128L48,133.3C96,139,192,149,288,138.7C384,128,480,96,576,85.3C672,75,768,85,864,101.3C960,117,1056,139,1152,133.3C1248,128,1344,96,1392,80L1440,64L1440,0L0,0Z"></path>
+  </svg>
+
+
+  <div class="avText">
+    <h1 class="avTitle scale sansation-bold">Pourquoi choisir SkillSwap ?</h1>
+
+    <div class="avList">
+      <span v-for="(adv, index) in advantages" :key="index" :class=" index % 2 === 0 ? 'avantageItem leftEntry sansation-regular' : 'avantageItem rightEntry sansation-regular'">
+        {{ adv.text }}
+      </span>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="marquee-container scale">
+    <div class="marquee-content">
+      <div
+        v-for="(comment, index) in comments"
+        :key="'c1-' + index"
+        class="comment-card"
+      >
+        <img :src="comment.avatar" alt="avatar" class="avatar" />
+        <div class="info">
+          <h2 class="name sansation-bold">{{ comment.name }}</h2>
+          <p class="text sansation-regular">{{ comment.text }}</p>
+        </div>
+      </div>
+
+      <div
+        v-for="(comment, index) in comments"
+        :key="'c2-' + index"
+        class="comment-card"
+      >
+        <img :src="comment.avatar" alt="avatar" class="avatar" />
+        <div class="info">
+          <h2 class="name sansation-bold">{{ comment.name }}</h2>
+          <p class="text sansation-regular">{{ comment.text }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
 </template>
 
 <style scoped>
@@ -161,18 +221,18 @@ section{
 }
 .upEntry{
     opacity: 0;
-    transform: translateY(30%);
+    scale: 0.5;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
 }
 .upEntry.in-view{
     opacity: 1;
-    transform: translateY(0);
+    scale: 1;
 }
 .leftEntry{
     opacity: 0;
     transform: translateX(-100%);
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
 
 }
 .leftEntry.in-view{
@@ -182,7 +242,7 @@ section{
 .rightEntry{
     opacity: 0;
     transform: translateX(100%);
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 
 }
 .rightEntry.in-view{
@@ -202,8 +262,8 @@ section{
 }
 .heroSec{
     background: #F3904F;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #3B4371, #F3904F);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #3B4371, #F3904F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to right, #3B4371, #F3904F);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3B4371, #F3904F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
     display: grid;
     grid-template-rows: 10vh 90vh;
@@ -270,7 +330,7 @@ background: linear-gradient(to right, #3B4371, #F3904F); /* W3C, IE 10+/ Edge, F
     background: linear-gradient(90deg, #F3904F, #f5741e);
     transform: translateY(0);
     border: transparent;
-    border-radius: 999px; /* pill button */
+    border-radius: 999px;
     font-size: 1.1rem;
     padding: 12px 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -295,7 +355,7 @@ background: linear-gradient(to right, #3B4371, #F3904F); /* W3C, IE 10+/ Edge, F
     height: 20px;
     width: 20px;
 }
-.separator{
+.separatorUp{
   position: absolute;
   left: 0;
   bottom: -1px;
@@ -314,6 +374,8 @@ background: linear-gradient(to right, #3B4371, #F3904F); /* W3C, IE 10+/ Edge, F
   padding: 4rem 2rem;
   text-align: center;
   gap: 5rem;
+  padding-bottom: 0;
+  box-sizing: border-box;
 }
 
 .tuto h1 {
@@ -322,7 +384,7 @@ background: linear-gradient(to right, #3B4371, #F3904F); /* W3C, IE 10+/ Edge, F
   color: #3B4371;
 }
 
-/* Cards */
+
 .cardContainer {
   display: flex;
   gap: 3rem;
@@ -349,7 +411,7 @@ background: linear-gradient(to right, #3B4371, #F3904F); /* W3C, IE 10+/ Edge, F
   box-shadow: 0 6px 16px rgba(0,0,0,0.25);
 }
 
-/* Step numbers */
+
 .stepNumber {
   position: absolute;
   top: -20px;
@@ -363,7 +425,7 @@ background: linear-gradient(to right, #3B4371, #F3904F); /* W3C, IE 10+/ Edge, F
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-/* Halo effect behind icons */
+
 .imgContainer {
   position: relative;
   display: flex;
@@ -394,6 +456,8 @@ background: linear-gradient(to right, #3B4371, #F3904F); /* W3C, IE 10+/ Edge, F
 }
 
 /* Texts inside cards */
+
+
 .textContainer h2 {
   font-size: 1.4rem;
   margin-bottom: 0.5rem;
@@ -414,4 +478,127 @@ background: linear-gradient(to right, #3B4371, #F3904F); /* W3C, IE 10+/ Edge, F
   }
 }
 
+
+/* Avantage + Témoignage Section */
+
+
+.avantage {
+  position: relative;
+  padding-top: 9%;
+  background-color: #aeb3d0;
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b4b71' fill-opacity='0.08'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  display: grid;
+  grid-template-rows: 90% 10%;
+}
+.separatorDown{
+  position: absolute;
+  left: 0;
+  width: 100%; 
+  top: 0;
+   color: var(--tuto-bottom);
+}
+.avText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding: 4rem 2rem;
+  color: #3B4371;
+}
+
+.avTitle {
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.avList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.avList span {
+font-size: 1.3rem;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.avList span:hover {
+  color: #F3904F;
+  transform: scale(1.1);
+}
+
+
+.marquee-container {
+  overflow: hidden;
+  width: 100%;
+  padding: 20px 0;
+  z-index: 20;
+}
+
+.marquee-content {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+}
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+.comment-card {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  background-color: whitesmoke;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px 15px;
+  margin: 0 10px;
+  min-width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.comment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px #f5741e5d;
+}
+
+
+.avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  margin-right: 18px;
+}
+
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  padding-top: 10px;
+}
+.name {
+  margin: 0;
+  color: #3B4371;
+}
+.text {
+  margin: 0;
+  color: black;
+}
+
+/* Animation infini */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
 </style>
