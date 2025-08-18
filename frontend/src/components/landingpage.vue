@@ -94,36 +94,50 @@ onMounted(() => {
       <img src="/Resources/images/heroSecImage.png" alt="" class="heroSecImage scale">
     </div>
     <svg class="separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#d1ac94" fill-opacity="1" 
-          d="M0,128L48,133.3C96,139,192,149,288,138.7C384,128,480,96,576,85.3C672,75,768,85,864,101.3C960,117,1056,139,1152,133.3C1248,128,1344,96,1392,80L1440,64L1440,0L0,0Z"></path>
+      <path fill="currentColor" fill-opacity="1"
+        d="M0,128L48,133.3C96,139,192,149,288,138.7C384,128,480,96,576,85.3C672,75,768,85,864,101.3C960,117,1056,139,1152,133.3C1248,128,1344,96,1392,80L1440,64L1440,0L0,0Z"></path>
     </svg>
+
   </section>
   
 
   <section class="tuto">
-    <h1 class="sansation-bold scale"> Comment ça marche ?</h1>
-    <div class="cardContainer">
-      <div class="card leftEntry">
-        <div class="imgContainer1">
-          <img src="/Resources/icons/guitare.png" alt="" class="cardImg">
-        </div>
-        <p class="sansation-regular">Proposez vos compétences</p>
+  <h1 class="sansation-bold scale"> Comment ça marche ?</h1>
+  <div class="cardContainer">
+    <div class="card leftEntry">
+      <div class="stepNumber sansation-regular">01</div>
+      <div class="imgContainer halo halo1">
+        <img src="/Resources/icons/guitare.png" alt="" class="cardImg">
       </div>
-      <div class="card upEntry">
-        <div class="imgContainer2">
-          <img src="/Resources/icons/programmation.png" alt="" class="cardImg">
-        </div>
-        <p class="sansation-regular">Trouvez ce dont vous avez besoin</p>
+      <div class="textContainer">
+        <h2 class="sansation-bold">Proposez vos compétences</h2>
+        <p class="sansation-regular">Partagez ce que vous savez faire avec la communauté.</p>
       </div>
-      <div class="card rightEntry">
-        <div class="imgContainer3">
-          <img src="/Resources/icons/echange.png" alt="" class="cardImg">
-        </div>
-        <p class="sansation-regular">Échangez via un système de crédits</p>
-      </div>
-
     </div>
-  </section>
+
+    <div class="card upEntry">
+      <div class="stepNumber sansation-regular">02</div>
+      <div class="imgContainer halo halo2">
+        <img src="/Resources/icons/programmation.png" alt="" class="cardImg">
+      </div>
+      <div class="textContainer">
+        <h2 class="sansation-bold">Trouvez ce dont vous avez besoin</h2>
+        <p class="sansation-regular">Accédez facilement aux compétences offertes par d’autres.</p>
+      </div>
+    </div>
+
+    <div class="card rightEntry">
+      <div class="stepNumber sansation-regular">03</div>
+      <div class="imgContainer halo halo3">
+        <img src="/Resources/icons/echange.png" alt="" class="cardImg">
+      </div>
+      <div class="textContainer">
+        <h2 class="sansation-bold">Échangez via un système de crédits</h2>
+        <p class="sansation-regular">Une heure donnée = une heure gagnée dans un autre domaine.</p>
+      </div>
+    </div>
+  </div>
+</section>
 </template>
 
 <style scoped>
@@ -163,7 +177,7 @@ section{
 }
 .leftEntry.in-view{
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
 }
 .rightEntry{
     opacity: 0;
@@ -173,7 +187,7 @@ section{
 }
 .rightEntry.in-view{
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
 }
 /* Hero Section */
 
@@ -210,7 +224,9 @@ background: linear-gradient(to right, #3B4371, #F3904F); /* W3C, IE 10+/ Edge, F
   z-index: 20;
   padding-bottom: 5%;
   box-sizing: border-box;
-    animation: fadeIn .5s ease-in;
+  animation: fadeIn .5s ease-in;
+  margin-top: -50px;
+
 
 }
 .text{
@@ -244,7 +260,6 @@ background: linear-gradient(to right, #3B4371, #F3904F); /* W3C, IE 10+/ Edge, F
     height: 400px;
     width: 400px;
     margin-left: 40px;
-    margin-top: -50px;
 }
 .start{
     display: flex;
@@ -282,111 +297,121 @@ background: linear-gradient(to right, #3B4371, #F3904F); /* W3C, IE 10+/ Edge, F
 }
 .separator{
   position: absolute;
-  bottom: -1px;
-  rotate: 180deg;
   left: 0;
+  bottom: -1px;
   width: 100%;
+  rotate: 180deg;   
+   color: var(--tuto-solid-top);
 }
-/* Tuto Section */
-.tuto{
-  background-color: #d1ac94;
-  display: grid;
-  grid-template-rows: 10% 90%;
-  align-items: center;
-  justify-content: center;
-  padding: 0 2rem;
-  padding-bottom: 3rem;
-}
-.tuto h1{
-    font-size: 3rem;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-    color : #3B4371;
-}
-.cardContainer{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 5rem;
-} 
-.card{
-    display: grid;
-    grid-template-rows: 70% 30%;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    width: 300px;
-    height: 300px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    background-color: rgba(255, 255, 255, 0.548);
-    border-radius: 30px;
-    transition: 0.3s;
-    overflow: hidden;
 
-}    
-.card:hover{
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    scale: 1.05;
-}    
-.imgContainer1{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    background-color: #d8002821;
-    width: 300px;
-    transition: background-color 0.3s;
+/* Tuto Section */
+.tuto {
+  background: linear-gradient(to bottom, var(--tuto-solid-top), var(--tuto-bottom));
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  gap: 5rem;
 }
-.imgContainer1::before {
+
+.tuto h1 {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  color: #3B4371;
+}
+
+/* Cards */
+.cardContainer {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 320px;
+  padding: 2rem 1.5rem;
+  border-radius: 25px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  gap: 1rem;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+/* Step numbers */
+.stepNumber {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  background: #3B4371;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Halo effect behind icons */
+.imgContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.halo::before {
   content: "";
   position: absolute;
-  width: 150px;
-  height: 150px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(243, 145, 79, 0.555), transparent);
+  filter: blur(40px);
   z-index: 0;
 }
-.card:hover .imgContainer1{
-    background-color: #d8002857;
-}
-.imgContainer2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    background-color: #736e6e34;
-    width: 300px;
-    transition: background-color 0.3s;
-}
-.card:hover .imgContainer2{
-    background-color: #736e6e5d;
-}
-.imgContainer3{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    background-color: #65bbfc34;
-    width: 300px;
-    transition: background-color 0.3s;
-}
-.card:hover .imgContainer3{
-    background-color: #65bbfc63;
-}
-.card img{
-    width: 130px;
-    height: 130px;
-}
-.card p{
-    font-size: 1.3rem;
-    text-align: center;
-    color: #333;
-    font-weight: 600;
-    padding: 0 20px;
+
+.halo1::before { background: radial-gradient(circle, #ff6b6b66, transparent); }
+.halo2::before { background: radial-gradient(circle, #4dabf766, transparent); }
+.halo3::before { background: radial-gradient(circle, #f39c1266, transparent); }
+
+.cardImg {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  z-index: 1;
 }
 
+/* Texts inside cards */
+.textContainer h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  color: #3B4371;
+}
+
+.textContainer p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .cardContainer {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
 
 </style>

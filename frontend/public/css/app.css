@@ -8,6 +8,10 @@ body{
     background-color: whitesmoke;
     overflow-x: hidden;
 }
+:root{
+  --tuto-solid-top: #d1ac94;
+  --tuto-bottom:    #f5e3d7;
+}
 
 .sansation-light {
   font-family: "Sansation", sans-serif;
