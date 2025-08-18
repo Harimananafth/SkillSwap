@@ -76,7 +76,7 @@ onMounted(() => {
 <template>
   <section class="heroSec">
     <div class="header">
-      <img src="/Resources/images/logo.png" alt="" class="logo">
+      <img src="" alt="" class="logo">
     </div>
     <div class="content">
       <div class="text ">
@@ -94,7 +94,7 @@ onMounted(() => {
       <img src="/Resources/images/heroSecImage.png" alt="" class="heroSecImage scale">
     </div>
     <svg class="separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path fill="#f9fafb" fill-opacity="1" 
+        <path fill="#d1ac94" fill-opacity="1" 
           d="M0,128L48,133.3C96,139,192,149,288,138.7C384,128,480,96,576,85.3C672,75,768,85,864,101.3C960,117,1056,139,1152,133.3C1248,128,1344,96,1392,80L1440,64L1440,0L0,0Z"></path>
     </svg>
   </section>
@@ -132,6 +132,8 @@ onMounted(() => {
 section{
     width: 100%;
     min-height: 100vh;
+    color: white;
+
 }
 .scale{
     opacity: 0;
@@ -185,15 +187,13 @@ section{
     width: 130px;
 }
 .heroSec{
-    /*
-    background: linear-gradient(180deg, #f0fff4 0%, #ffffff 100%);
+    background: #F3904F;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #3B4371, #F3904F);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #3B4371, #F3904F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-    */
-    background-image: linear-gradient( 174.2deg,  rgba(255,244,228,1) 7.1%, rgba(240,246,238,1) 67.4% );        
-    animation: fadeIn .5s ease-in;
     display: grid;
     grid-template-rows: 10vh 90vh;
-    padding: 1% 2% 0 5%;
+    padding: 1% 2% 9% 5%;
     box-sizing: border-box;
     position: relative;
 
@@ -210,6 +210,8 @@ section{
   z-index: 20;
   padding-bottom: 5%;
   box-sizing: border-box;
+    animation: fadeIn .5s ease-in;
+
 }
 .text{
     box-sizing: border-box;
@@ -242,6 +244,7 @@ section{
     height: 400px;
     width: 400px;
     margin-left: 40px;
+    margin-top: -50px;
 }
 .start{
     display: flex;
@@ -249,7 +252,7 @@ section{
     align-items: center;
     justify-content: center;
     width: 280px;
-    background: linear-gradient(90deg, #ff8f56, #ff6b2d);
+    background: linear-gradient(90deg, #F3904F, #f5741e);
     transform: translateY(0);
     border: transparent;
     border-radius: 999px; /* pill button */
@@ -279,19 +282,19 @@ section{
 }
 .separator{
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   rotate: 180deg;
   left: 0;
   width: 100%;
 }
 /* Tuto Section */
 .tuto{
-  background-color: #f9fafb;
+  background-color: #d1ac94;
   display: grid;
   grid-template-rows: 10% 90%;
   align-items: center;
   justify-content: center;
-  padding: 1rem 2rem;
+  padding: 0 2rem;
   padding-bottom: 3rem;
 }
 .tuto h1{
@@ -300,6 +303,7 @@ section{
     display: flex;
     justify-content: center;
     margin-top: 1rem;
+    color : #3B4371;
 }
 .cardContainer{
     display: flex;
@@ -317,7 +321,7 @@ section{
     width: 300px;
     height: 300px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.548);
     border-radius: 30px;
     transition: 0.3s;
     overflow: hidden;
@@ -335,6 +339,15 @@ section{
     background-color: #d8002821;
     width: 300px;
     transition: background-color 0.3s;
+}
+.imgContainer1::before {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(243, 145, 79, 0.555), transparent);
+  z-index: 0;
 }
 .card:hover .imgContainer1{
     background-color: #d8002857;
