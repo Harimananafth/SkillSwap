@@ -53,10 +53,23 @@ onMounted(() => {
             }
         })
     }, {})
-    const animateElements = document.querySelectorAll('.scale');
-    animateElements.forEach(element => {
+    const scale = document.querySelectorAll('.scale');
+    scale.forEach(element => {
         observer.observe(element)
     }); 
+    const upEntry = document.querySelectorAll('.upEntry');
+    upEntry.forEach(element => {
+        observer.observe(element)
+    }); 
+    const leftEntry = document.querySelectorAll('.leftEntry');
+    leftEntry.forEach(element => {
+        observer.observe(element)
+    }); 
+    const rightEntry = document.querySelectorAll('.rightEntry');
+    rightEntry.forEach(element => {
+        observer.observe(element)
+    }); 
+    
 })
 </script>
 
@@ -80,24 +93,35 @@ onMounted(() => {
       </div>
       <img src="/Resources/images/heroSecImage.png" alt="" class="heroSecImage scale">
     </div>
+    <svg class="separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path fill="#f9fafb" fill-opacity="1" 
+          d="M0,128L48,133.3C96,139,192,149,288,138.7C384,128,480,96,576,85.3C672,75,768,85,864,101.3C960,117,1056,139,1152,133.3C1248,128,1344,96,1392,80L1440,64L1440,0L0,0Z"></path>
+    </svg>
   </section>
   
 
   <section class="tuto">
-    <div class="content scale">
-      <h1 class="sansation-bold">Comment ça marche ?</h1>
-      <p class="sansation-regular">C’est simple, rapide et gratuit !</p>
-      <div class="steps scale">
-        <div class="step scale">
-          <p class="sansation-regular">Créez votre compte en quelques clics.</p>
+    <h1 class="sansation-bold scale"> Comment ça marche ?</h1>
+    <div class="cardContainer">
+      <div class="card leftEntry">
+        <div class="imgContainer1">
+          <img src="/Resources/icons/guitare.png" alt="" class="cardImg">
         </div>
-        <div class="step scale">
-          <p class="sansation-regular">Proposez vos compétences et découvrez celles des autres.</p>
-        </div>
-        <div class="step scale">
-          <p class="sansation-regular">Échangez vos compétences sans débourser un centime.</p>
-        </div>
+        <p class="sansation-regular">Proposez vos compétences</p>
       </div>
+      <div class="card upEntry">
+        <div class="imgContainer2">
+          <img src="/Resources/icons/programmation.png" alt="" class="cardImg">
+        </div>
+        <p class="sansation-regular">Trouvez ce dont vous avez besoin</p>
+      </div>
+      <div class="card rightEntry">
+        <div class="imgContainer3">
+          <img src="/Resources/icons/echange.png" alt="" class="cardImg">
+        </div>
+        <p class="sansation-regular">Échangez via un système de crédits</p>
+      </div>
+
     </div>
   </section>
 </template>
@@ -112,13 +136,43 @@ section{
 .scale{
     opacity: 0;
     scale: 0.5;
-    transition: .6s ease;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
 }
 .scale.in-view{
     opacity: 1;
     scale: 1;
 }
+.upEntry{
+    opacity: 0;
+    transform: translateY(30%);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 
+}
+.upEntry.in-view{
+    opacity: 1;
+    transform: translateY(0);
+}
+.leftEntry{
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+.leftEntry.in-view{
+    opacity: 1;
+    transform: translateY(0);
+}
+.rightEntry{
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+.rightEntry.in-view{
+    opacity: 1;
+    transform: translateY(0);
+}
 /* Hero Section */
 
 
@@ -129,69 +183,85 @@ section{
 }
 .logo{
     width: 130px;
-    height: 100%;
 }
 .heroSec{
-    background-image: linear-gradient( 174.2deg,  rgba(255,244,228,1) 7.1%, rgba(240,246,238,1) 67.4% );        
+    /*
+    background: linear-gradient(180deg, #f0fff4 0%, #ffffff 100%);
 
+    */
+    background-image: linear-gradient( 174.2deg,  rgba(255,244,228,1) 7.1%, rgba(240,246,238,1) 67.4% );        
+    animation: fadeIn .5s ease-in;
     display: grid;
-    grid-template-rows: 15% 85%;
-    padding: 0 2% 8% 5%;
+    grid-template-rows: 10vh 90vh;
+    padding: 1% 2% 0 5%;
     box-sizing: border-box;
+    position: relative;
+
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 .content{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: 65% 35%;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  padding-bottom: 5%;
+  box-sizing: border-box;
 }
 .text{
     box-sizing: border-box;
     display: grid;
     grid-template-rows: 1fr 1fr;
     align-items: center;
-    justify-content: center;
 }
 .text h1{
     font-size: 3rem;
-    text-align: center;
+    text-align: left;
     font-weight: 700;
 }
 .othertext{
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    gap: 1rem;
+    align-items: start;
     margin-top: 2rem;
 }
 .othertext p{
     font-size: 1rem;
     margin-bottom: 1rem;
-    text-align: center;
+    text-align: left;
+    width: 100%;
 }
 .heroSecImage{
-    height: 520px;
-    width: 520px;
-    margin-left: 80px;
+    height: 400px;
+    width: 400px;
+    margin-left: 40px;
 }
 .start{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 10px 0;
     width: 280px;
-    background-color: #ff8f56;
+    background: linear-gradient(90deg, #ff8f56, #ff6b2d);
+    transform: translateY(0);
     border: transparent;
-    border-radius: 10px;
+    border-radius: 999px; /* pill button */
+    font-size: 1.1rem;
+    padding: 12px 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     transition: .3s;
 }
 .start:hover{
     cursor: pointer;
-    background-color: #ff7b39;
-    box-shadow: 0 2px 9px rgba(0, 0, 0, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 
 }
 .start p {
@@ -207,16 +277,103 @@ section{
     height: 20px;
     width: 20px;
 }
-
+.separator{
+  position: absolute;
+  bottom: 0;
+  rotate: 180deg;
+  left: 0;
+  width: 100%;
+}
 /* Tuto Section */
-.tuto .content{
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.tuto{
+  background-color: #f9fafb;
+  display: grid;
+  grid-template-rows: 10% 90%;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  padding-bottom: 3rem;
 }
 .tuto h1{
-    font-size: 2.5rem;
-}          
+    font-size: 3rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.cardContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5rem;
+} 
+.card{
+    display: grid;
+    grid-template-rows: 70% 30%;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 300px;
+    height: 300px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    border-radius: 30px;
+    transition: 0.3s;
+    overflow: hidden;
+
+}    
+.card:hover{
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    scale: 1.05;
+}    
+.imgContainer1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #d8002821;
+    width: 300px;
+    transition: background-color 0.3s;
+}
+.card:hover .imgContainer1{
+    background-color: #d8002857;
+}
+.imgContainer2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #736e6e34;
+    width: 300px;
+    transition: background-color 0.3s;
+}
+.card:hover .imgContainer2{
+    background-color: #736e6e5d;
+}
+.imgContainer3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #65bbfc34;
+    width: 300px;
+    transition: background-color 0.3s;
+}
+.card:hover .imgContainer3{
+    background-color: #65bbfc63;
+}
+.card img{
+    width: 130px;
+    height: 130px;
+}
+.card p{
+    font-size: 1.3rem;
+    text-align: center;
+    color: #333;
+    font-weight: 600;
+    padding: 0 20px;
+}
+
+
 </style>
