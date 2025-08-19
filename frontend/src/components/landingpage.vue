@@ -296,7 +296,7 @@ section{
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.content{
+.content {
   display: grid;
   grid-template-columns: 65% 35%;
   align-items: center;
@@ -306,8 +306,7 @@ section{
   box-sizing: border-box;
   animation: fadeIn .5s ease-in;
   margin-top: -50px;
-
-
+  text-align: left; /* devient center sur mobile via media query */
 }
 .text{
     box-sizing: border-box;
@@ -407,14 +406,12 @@ section{
   color: #3B4371;
 }
 
-
 .cardContainer {
   display: flex;
   gap: 3rem;
   flex-wrap: wrap;
   justify-content: center;
 }
-
 .card {
   position: relative;
   display: flex;
@@ -690,4 +687,87 @@ footer {
   font-size: 0.8rem;
   color: rgba(0, 0, 0, 0.521);
 }
+
+/* === Responsive Tablette et Mobile === */
+@media (max-width: 1200px) {
+  .content {
+    grid-template-columns: 1fr 1fr;
+    padding-bottom: 3%;
+  }
+  .heroSecImage {
+    height: 300px;
+    width: 300px;
+    margin-left: 20px;
+  }
+  .text h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    row-gap: 2rem;
+  }
+  .heroSecImage {
+    margin-left: 0;
+    height: 250px;
+    width: 250px;
+  }
+  .text h1 {
+    font-size: 2rem;
+  }
+  .othertext {
+    align-items: center;
+    text-align: center;
+  }
+  .cardContainer {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .text h1 {
+    font-size: 1.7rem;
+  }
+  .othertext p {
+    font-size: 0.9rem;
+  }
+  .start {
+    width: 220px;
+    padding: 10px 15px;
+    font-size: 1rem;
+  }
+  .heroSecImage {
+    height: 200px;
+    width: 200px;
+  }
+  .avTitle {
+    font-size: 2rem;
+  }
+  .avList span {
+    font-size: 1rem;
+  }
+  .marquee-content {
+    gap: 10px;
+  }
+  .call h1 {
+    font-size: 1.7rem;
+  }
+  .btns {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .btns button {
+    width: 180px;
+    font-size: 1rem;
+  }
+  footer {
+    padding: 1rem;
+  }
+}
+
 </style>
