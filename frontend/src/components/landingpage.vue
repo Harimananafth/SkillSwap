@@ -106,97 +106,117 @@ onMounted(() => {
   <!--Tuto section-->
 
   <section class="tuto">
-  <h1 class="sansation-bold scale"> Comment ça marche ?</h1>
-  <div class="cardContainer">
-    <div class="card leftEntry">
-      <div class="stepNumber sansation-regular">01</div>
-      <div class="imgContainer halo halo1">
-        <img src="/Resources/icons/guitare.png" alt="" class="cardImg">
+    <h1 class="sansation-bold scale"> Comment ça marche ?</h1>
+    <div class="cardContainer">
+      <div class="card leftEntry">
+        <div class="stepNumber sansation-regular">01</div>
+        <div class="imgContainer halo halo1">
+          <img src="/Resources/icons/guitare.png" alt="" class="cardImg">
+        </div>
+        <div class="textContainer">
+          <h2 class="sansation-bold">Proposez vos compétences</h2>
+          <p class="sansation-regular">Partagez ce que vous savez faire avec la communauté.</p>
+        </div>
       </div>
-      <div class="textContainer">
-        <h2 class="sansation-bold">Proposez vos compétences</h2>
-        <p class="sansation-regular">Partagez ce que vous savez faire avec la communauté.</p>
-      </div>
-    </div>
 
-    <div class="card scale">
-      <div class="stepNumber sansation-regular">02</div>
-      <div class="imgContainer halo halo2">
-        <img src="/Resources/icons/programmation.png" alt="" class="cardImg">
+      <div class="card scale">
+        <div class="stepNumber sansation-regular">02</div>
+        <div class="imgContainer halo halo2">
+          <img src="/Resources/icons/programmation.png" alt="" class="cardImg">
+        </div>
+        <div class="textContainer">
+          <h2 class="sansation-bold">Trouvez ce dont vous avez besoin</h2>
+          <p class="sansation-regular">Accédez facilement aux compétences offertes par d’autres.</p>
+        </div>
       </div>
-      <div class="textContainer">
-        <h2 class="sansation-bold">Trouvez ce dont vous avez besoin</h2>
-        <p class="sansation-regular">Accédez facilement aux compétences offertes par d’autres.</p>
-      </div>
-    </div>
 
-    <div class="card rightEntry">
-      <div class="stepNumber sansation-regular">03</div>
-      <div class="imgContainer halo halo3">
-        <img src="/Resources/icons/echange.png" alt="" class="cardImg">
-      </div>
-      <div class="textContainer">
-        <h2 class="sansation-bold">Échangez via un système de crédits</h2>
-        <p class="sansation-regular">Une heure donnée = une heure gagnée dans un autre domaine.</p>
+      <div class="card rightEntry">
+        <div class="stepNumber sansation-regular">03</div>
+        <div class="imgContainer halo halo3">
+          <img src="/Resources/icons/echange.png" alt="" class="cardImg">
+        </div>
+        <div class="textContainer">
+          <h2 class="sansation-bold">Échangez via un système de crédits</h2>
+          <p class="sansation-regular">Une heure donnée = une heure gagnée dans un autre domaine.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 <!--Avantage + témoignage section-->
 
-<section class="avantage">
+  <section class="avantage">
 
 
-  <svg class="separatorDown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-    <path fill="currentColor" fill-opacity="1"
-      d="M0,128L48,133.3C96,139,192,149,288,138.7C384,128,480,96,576,85.3C672,75,768,85,864,101.3C960,117,1056,139,1152,133.3C1248,128,1344,96,1392,80L1440,64L1440,0L0,0Z"></path>
-  </svg>
+    <svg class="separatorDown" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path fill="currentColor" fill-opacity="1"
+        d="M0,128L48,133.3C96,139,192,149,288,138.7C384,128,480,96,576,85.3C672,75,768,85,864,101.3C960,117,1056,139,1152,133.3C1248,128,1344,96,1392,80L1440,64L1440,0L0,0Z"></path>
+    </svg>
 
 
-  <div class="avText">
-    <h1 class="avTitle scale sansation-bold">Pourquoi choisir SkillSwap ?</h1>
+    <div class="avText">
+      <h1 class="avTitle scale sansation-bold">Pourquoi choisir SkillSwap ?</h1>
 
-    <div class="avList">
-      <span v-for="(adv, index) in advantages" :key="index" :class=" index % 2 === 0 ? 'avantageItem leftEntry sansation-regular' : 'avantageItem rightEntry sansation-regular'">
-        {{ adv.text }}
-      </span>
-    </div>
-
-  </div>
-
-
-
-
-  <div class="marquee-container scale">
-    <div class="marquee-content">
-      <div
-        v-for="(comment, index) in comments"
-        :key="'c1-' + index"
-        class="comment-card"
-      >
-        <img :src="comment.avatar" alt="avatar" class="avatar" />
-        <div class="info">
-          <h2 class="name sansation-bold">{{ comment.name }}</h2>
-          <p class="text sansation-regular">{{ comment.text }}</p>
-        </div>
+      <div class="avList">
+        <span v-for="(adv, index) in advantages" :key="index" :class=" index % 2 === 0 ? 'avantageItem leftEntry sansation-regular' : 'avantageItem rightEntry sansation-regular'">
+          {{ adv.text }}
+        </span>
       </div>
 
-      <div
-        v-for="(comment, index) in comments"
-        :key="'c2-' + index"
-        class="comment-card"
-      >
-        <img :src="comment.avatar" alt="avatar" class="avatar" />
-        <div class="info">
-          <h2 class="name sansation-bold">{{ comment.name }}</h2>
-          <p class="text sansation-regular">{{ comment.text }}</p>
+    </div>
+
+
+
+
+    <div class="marquee-container scale">
+      <div class="marquee-content">
+        <div
+          v-for="(comment, index) in comments"
+          :key="'c1-' + index"
+          class="comment-card"
+        >
+          <img :src="comment.avatar" alt="avatar" class="avatar" />
+          <div class="info">
+            <h2 class="name sansation-bold">{{ comment.name }}</h2>
+            <p class="text sansation-regular">{{ comment.text }}</p>
+          </div>
+        </div>
+
+        <div
+          v-for="(comment, index) in comments"
+          :key="'c2-' + index"
+          class="comment-card"
+        >
+          <img :src="comment.avatar" alt="avatar" class="avatar" />
+          <div class="info">
+            <h2 class="name sansation-bold">{{ comment.name }}</h2>
+            <p class="text sansation-regular">{{ comment.text }}</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <svg class="separatorUp" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"><g fill="#3B4371"><path d="M0 100V0h1000v4L0 100z"></path><path d="M0 100V0h1000v24L0 100z" opacity=".5"></path><path d="M0 100V0h1000v44L0 100z" opacity=".4"></path><path d="M0 100V0h1000v64L0 100z" opacity=".4"></path><path d="M0 100V0h1000v84L0 100z" opacity=".2"></path></g></svg>
+    </section>
 
-</section>
+  <!--Section appel à l'inscription-->
+  <section class="call">
+    <h1 class="sansation-bold scale">Rejoignez la communauté dès aujourd’hui et échangez vos compétences !</h1>
+    <div class="btns">
+      <button class="signUp sansation-bold scale">
+        S'inscrire
+      </button>
+      <button class="signIn sansation-bold scale">
+        Se connecter
+      </button>
+    </div>
+    <footer>
+      <div class="footerContent">
+        <p class="sansation-regular">© 2025 Fitahiana Rabeharison Inc. Tous droits réservés.</p>
+        <p class="sansation-regular">Mentions légales | Politique de confidentialité</p>
+      </div>
+    </footer>
+  </section>
+
 
 </template>
 
@@ -299,6 +319,7 @@ section{
     font-size: 3rem;
     text-align: left;
     font-weight: 700;
+    color: white;
 }
 .othertext{
     height: 100%;
@@ -315,6 +336,8 @@ section{
     margin-bottom: 1rem;
     text-align: left;
     width: 100%;
+    color: white;
+
 }
 .heroSecImage{
     height: 400px;
@@ -489,6 +512,7 @@ section{
   background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b4b71' fill-opacity='0.08'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   display: grid;
   grid-template-rows: 90% 10%;
+  padding-bottom: 9.5%;
 }
 .separatorDown{
   position: absolute;
@@ -600,5 +624,70 @@ font-size: 1.3rem;
   100% {
     transform: translateX(-50%);
   }
+}
+
+/* Call to Action Section */
+.call {
+  background-image: linear-gradient( 179.5deg,  rgba(59,67,113,1) 13.8%, rgba(243,144,79,1) 93.6% );
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding-top: 12%;
+}
+.btns{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  height: 60px;
+}
+.btns button{
+  height: 50px;
+  width: 220px;
+  color: white;
+  background: linear-gradient(90deg, rgba(114, 120, 146, 0.699), rgb(65, 73, 114));
+  transform: translateY(0);
+  border: transparent;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  padding: 12px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.btns button:hover{
+    cursor: pointer;
+    background-color: #333c6e;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+}
+/*footer*/
+
+footer {
+  color: white;
+  padding: 2rem;
+  padding-top: 3%;
+  text-align: center;
+  position: relative;
+
+}
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;  
+}
+.footerContent p {
+  margin: 0;  
+  font-size: 0.9rem;
+  color: #ccc;
+}
+.footerContent p:last-child {
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.521);
 }
 </style>
